@@ -3,6 +3,7 @@ import RadioButton from "./RadioButton.jsx";
 
 function Form({onAddData}) {
     const [newItem, setNewItem] = useState({title: '', body: '', archived: false});
+    const [error, setError] = useState('')
 
     const handleInputChange = (e) => {
         const {name, value, checked, type} = e.target;
@@ -21,10 +22,19 @@ function Form({onAddData}) {
             <h1 className="text-center text-white text-xl font-semibold mb-4">Catatan</h1>
             <div className="">
                 <input
-                    onChange={(e) => setNewItem({...newItem, title: e.target.value})}
+                    onChange={(e) => {
+                        const inputValue = e.target.value
+                        if (inputValue.length <= 10) {
+                            setNewItem({...newItem, title: e.target.value})
+                            setError('')
+                        } else {
+                            setError('Max Title hanya di perbolehkan 10 !')
+                        }
+                    }}
                     value={newItem.title}
                     className="py-3 px-5 text-black w-full outline-none rounded-lg mb-5" type="text"
                     placeholder="Judul"/>
+                {error && <p className="text-red-500 mb-5">{error}</p>}
                 <textarea
                     onChange={(e) => setNewItem({...newItem, body: e.target.value})}
                     value={newItem.body}

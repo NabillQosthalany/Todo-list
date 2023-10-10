@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {AiOutlineSearch} from "react-icons/ai";
 
-const SearchInput = ({onSearch}) => {
+function SearchInput({onSearch}) {
     const [searchData, setSearchData] = useState('')
     const handleChange = (e) => {
         const {value} = e.target
@@ -18,7 +18,7 @@ const SearchInput = ({onSearch}) => {
             </div>
 
         </div>
-    );
-};
+    )
+}
 
 export default SearchInput;

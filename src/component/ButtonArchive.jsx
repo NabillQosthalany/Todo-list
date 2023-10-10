@@ -1,5 +1,5 @@
 import React from 'react';
-import {AiOutlineCloudDownload} from "react-icons/ai";
+import {AiOutlineCloudDownload, AiOutlineCloudUpload} from "react-icons/ai";
 
 function ButtonArchive({onClick, archived}) {
     const buttonClasses = archived === true
@@ -10,7 +10,8 @@ function ButtonArchive({onClick, archived}) {
         <button
             onClick={onClick}
             className={buttonClasses}>
-            <AiOutlineCloudDownload className="mr-2"/>
+            {archived === true ? <AiOutlineCloudUpload className="mr-2"/> : <AiOutlineCloudDownload className="mr-2"/>}
+
             {buttonText}
         </button>
     );

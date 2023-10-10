@@ -3,21 +3,14 @@ import './App.css'
 import Card from "./component/Card.jsx";
 import SearchInput from "./component/Search";
 import Form from "./component/form.jsx";
+import {getInitialData} from "./utils/index.js";
 
 
 function App() {
     const [activeNotes, setActiveNotes] = useState([])
     const [archivedNotes, setArchivedNotes] = useState([])
     const [searchInput, setSearchInput] = useState('');
-    const [data, setData] = useState([
-        {
-            id: 1,
-            title: 'Contoh Judul',
-            body: 'Ini adalah isi catatan.',
-            archived: true,
-            createdAt: '2023-10-10',
-        },
-    ])
+    const [data, setData] = useState(getInitialData)
     const handleAddData = (newItem) => {
         const id = Date.now().toString()
         setData([...data, {id, ...newItem}])
